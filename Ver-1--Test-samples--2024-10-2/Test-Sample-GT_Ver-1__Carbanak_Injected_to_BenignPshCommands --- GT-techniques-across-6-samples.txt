@@ -77,3 +77,17 @@ Test-sample set-5
 	"cmd.exe /c reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run /f /v Java-Update /t REG_SZ /d C:\Users\Public\Java-Update.vbs"     // GROUND-TRUTH : T1547.001: Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder (persistence) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
 
 	"C:\Users\#{cfo.user.username}\AppData\Local\Temp\DefenderUpgradeExec.exe"     // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Test-sample set-6
+
+	> IN "Technique-knowledge-file--80.json" : { T1056.001, }
+	> NOT IN "Technique-knowledge-file--80.json" : { T1555.003 , T1070.004  }
+
+	"type C:\Users\#{cfo.user.username}\AppData\Local\Temp\klog2.txt"     // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+
+	"Move-Item dumpWebCreds.exe C:\Users\#{cfo.user.username}\AppData\Local\Temp\infosMin48.exe;
+	C:\Users\#{cfo.user.username}\AppData\Local\Temp\infosMin48.exe -i -H"     // GROUND-TRUTH : T1555.003: Credentials from Password Stores: Credentials from Web Browsers (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+
+	"Remove-Item $env:TEMP\* -Recurse -Force -Erroraction 'silentlycontinue'"     // GROUND-TRUTH : T1070.004: Indicator Removal on Host: File Deletion (defense-evasion) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
