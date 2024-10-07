@@ -7,7 +7,8 @@ Get-EventLog -LogName Application -Newest 10 -Message *     // LABEL: BENIGN-POW
 New-Item -ItemType Directory -Force C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver;
 Move-Item pscp.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe;
 Move-Item psexec.py C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\psexec.py;
-Move-Item impacket_exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\runtime;\nMove-Item plink.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\plink.exe;
+Move-Item impacket_exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\runtime;
+Move-Item plink.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\plink.exe;
 Move-Item tiny.exe C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\tiny.exe; // GROUND-TRUTH : T1105: Ingress Tool Transfer (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default-args
 $env:ProgramFiles=\C:\Program Files (x86)\""     // LABEL: BENIGN-POWERSHELL-COMMAND
 Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
