@@ -1,0 +1,14 @@
+type C:\\Users\\jsmith\\AppData\\Local\\Temp\\klog2.txt    // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Move-Item dumpWebCreds.exe C:\\Users\\jsmith\\AppData\\Local\\Temp\\infosMin48.exe;
+C:\\Users\\jsmith\\AppData\\Local\\Temp\\infosMin48.exe -i -H   // GROUND-TRUTH : T1555.003: Credentials from Password Stores: Credentials from Web Browsers (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-EventLog -LogName System | Where-Object {$_.EntryType -eq 'Warning' -and $_.Message -like 'Disk C:*' -and $_.TimeGenerated -gt (Get-Date).AddDays(-7)} | Select-Object -First 15     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-EventLog -LogName Application | Where-Object {$_.EntryType -eq 'Error' -and $_.Source -eq 'System' -and $_.Message -like '*File Not Found*'} | Select-Object -First 10     // LABEL: BENIGN-POWERSHELL-COMMAND
+Stop-Process -Name DefenderUpgradeExec;
+Remove-Item $env:TEMP\* -Recurse -Force -Erroraction 'silentlycontinue'     // GROUND-TRUTH : T1070.004: Indicator Removal on Host: File Deletion (defense-evasion) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Remove-Item -Path C:\Windows\Temp -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Mailbox -Identity user@example.com -Database mailbox_database -PrimarySmtpAddress user@example.com     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service -Name 'wuauserv' -ComputerName localhost -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-WmiObject -Class Win32_Process | Where-Object {$_.Name -eq 'notepad.exe'} | Format-Table Name, Path -AutoSize     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Transcript -Path 'C:\Logs\Session.txt' -Append     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Process cmd -ArgumentList '/c echo This is a simple command'     // LABEL: BENIGN-POWERSHELL-COMMAND
